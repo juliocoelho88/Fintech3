@@ -64,24 +64,16 @@ fun LoginScreen() {
                 placeholder = "Qual o seu e-mail?",
                 label = "Digite o seu e-mail",
                 modifier = Modifier,
-                keyboardType = KeyboardType.Email,
-                atualizarValor = {email = it}
-            ) {
-
-
-            }
+                keyboardType = KeyboardType.Email
+            ) { email = it }
             Spacer(modifier = Modifier.height(16.dp))
             CaixaDeEntrada(
                 value = senha,
                 placeholder = "Qual a sua senha?",
                 label = "Digite a sua senha",
                 modifier = Modifier,
-                keyboardType = KeyboardType.Password,
-                atualizarValor = {senha = it}
-            ) {
-
-
-            }
+                keyboardType = KeyboardType.Password
+            ) { senha = it }
             Button(
                 onClick = {},
                 modifier = Modifier

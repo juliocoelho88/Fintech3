@@ -28,19 +28,15 @@ import androidx.compose.ui.unit.sp
 import br.com.fiap.fintech.TipoTransacao
 import br.com.fiap.fintech.Transacao
 import br.com.fiap.fintech.components.CaixaDeEntrada
-import br.com.fiap.fintech.components.CardInvestimentos
 import br.com.fiap.fintech.components.CardLogo
 import br.com.fiap.fintech.viewmodel.TransacoesViewModel
 
 @Composable
-fun InvestimentoScreen(transacoesViewModel: TransacoesViewModel) {
-    var valorInvestimento by remember { mutableStateOf(0.0) }
-    var tipoInvestimento by remember { mutableStateOf("") }
-    var valorTotalInvestido by remember { mutableStateOf(0.0) }
-    var ultimasTransacoes by remember { mutableStateOf(listOf<Transacao>()) }
-
-    CardInvestimentos(valorTotalInvestido = valorTotalInvestido)
-    MainScreen(valorTotalInvestido)
+fun ReceitaScreen(transacoesViewModel: TransacoesViewModel) {
+    var valorReceita by remember { mutableStateOf(0.0) }
+    var tipoReceita by remember { mutableStateOf("") }
+    var valorTotalReceitas by remember { mutableStateOf(0.0) }
+    var ultimasReceitas by remember { mutableStateOf(listOf<Transacao>()) }
 
     Column(
         modifier = Modifier
@@ -57,7 +53,7 @@ fun InvestimentoScreen(transacoesViewModel: TransacoesViewModel) {
             colors = CardDefaults.cardColors(containerColor = Color(0xD0E9E1E1))
         ) {
             Text(
-                text = "INVESTIMENTO",
+                text = "RECEITAS",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
@@ -65,28 +61,28 @@ fun InvestimentoScreen(transacoesViewModel: TransacoesViewModel) {
                     .align(Alignment.CenterHorizontally)
             )
             CaixaDeEntrada(
-                value = tipoInvestimento,
-                placeholder = "Qual Investimento você vai escolher?",
-                label = "Digite o tipo de investimento",
+                value = tipoReceita,
+                placeholder = "Qual Receita você vai lançar?",
+                label = "Digite o tipo de receita",
                 modifier = Modifier,
                 keyboardType = KeyboardType.Text
-            ) { tipoInvestimento = it }
+            ) { tipoReceita = it }
             CaixaDeEntrada(
-                value = valorInvestimento.toString(),
-                placeholder = "Quanto deseja investir?",
-                label = "Digite o valor do investimento:",
+                value = valorReceita.toString(),
+                placeholder = "Quanto deseja lançar?",
+                label = "Digite o valor da receita:",
                 modifier = Modifier,
                 keyboardType = KeyboardType.Number
             ) {
-                valorInvestimento = it.toDoubleOrNull() ?: 0.0
+                valorReceita = it.toDoubleOrNull() ?: 0.0
             }
             Button(
                 onClick = {
-                    val investimento = Transacao(TipoTransacao.INVESTIMENTO, tipoInvestimento, valorInvestimento)
-                    ultimasTransacoes = listOf(investimento) + ultimasTransacoes.take(2)
-                    valorTotalInvestido += valorInvestimento
-                    valorInvestimento = 0.0
-                    tipoInvestimento = ""
+                    val receita = Transacao(TipoTransacao.RECEITA, tipoReceita, valorReceita)
+                    ultimasReceitas = listOf(receita) + ultimasReceitas.take(2)
+                    valorTotalReceitas += valorReceita
+                    valorReceita = 0.0
+                    tipoReceita = ""
                 },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
@@ -95,14 +91,14 @@ fun InvestimentoScreen(transacoesViewModel: TransacoesViewModel) {
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xD0E9E1E1))
             ) {
                 Text(
-                    text = "Cadastrar",
+                    text = "Lançar Receita",
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,
                     fontSize = 14.sp
                 )
             }
             Text(
-                text = "Total Investido: R$$valorTotalInvestido",
+                text = "Total de Receitas: R$$valorTotalReceitas",
                 color = Color.Black,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
@@ -124,13 +120,13 @@ fun InvestimentoScreen(transacoesViewModel: TransacoesViewModel) {
                         .fillMaxSize()
                 ) {
                     Text(
-                        text = "Últimos Investimentos:",
+                        text = "Últimas Receitas:",
                         color = Color.White,
                         fontSize = 14.sp
                     )
-                    ultimasTransacoes.forEach { transacao ->
+                    ultimasReceitas.forEach { receita ->
                         Text(
-                            text = "${transacao.descricao}: R$${transacao.valor}",
+                            text = "${receita.descricao}: R$${receita.valor}",
                             color = Color.White,
                             fontSize = 14.sp
                         )

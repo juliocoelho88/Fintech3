@@ -1,6 +1,5 @@
 package br.com.fiap.fintech.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,15 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 
 @Composable
-fun CardInvestmentos() {
+fun CardInvestimentos(valorTotalInvestido: Double) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
-            //.clickable { navController.navigate("Criar a tela de add investientos") },
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFFFFFFF))
     ) {
@@ -43,31 +40,16 @@ fun CardInvestmentos() {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "Depósitos",
+                    text = "Total",
                     color = Color.Black,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold
                 )
                 Text(
-                    text = "Rendimentos",
+                    text = "$valorTotalInvestido",
                     color = Color.Black,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold
-                )
-            }
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = "$500,00", // Substitua pelo valor real do depósito
-                    color = Color.Black,
-                    fontSize = 16.sp
-                )
-                Text(
-                    text = "$100,00", // Substitua pelo valor real do rendimento
-                    color = Color.Black,
-                    fontSize = 16.sp
                 )
             }
         }

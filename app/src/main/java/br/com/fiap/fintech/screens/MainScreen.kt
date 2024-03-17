@@ -8,15 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import br.com.fiap.fintech.components.CardConta
-import br.com.fiap.fintech.components.CardInvestmentos
+import br.com.fiap.fintech.components.CardInvestimentos
 import br.com.fiap.fintech.components.CardLogo
 import br.com.fiap.fintech.components.CardTransacoes
 
 
 @Composable
-fun MainScreen() {
+fun MainScreen(valorTotalInvestido: Double) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -25,7 +24,7 @@ fun MainScreen() {
     ) {
         CardLogo()
         CardConta()
-        CardInvestmentos()
+        CardInvestimentos(valorTotalInvestido)
         CardTransacoes()
     }
 }
