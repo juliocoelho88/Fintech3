@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import br.com.fiap.fintech.components.CardConta
 import br.com.fiap.fintech.components.CardInvestmentos
 import br.com.fiap.fintech.components.CardLogo

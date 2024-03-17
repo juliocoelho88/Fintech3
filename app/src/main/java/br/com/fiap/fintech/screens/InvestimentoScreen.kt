@@ -1,8 +1,9 @@
 package br.com.fiap.fintech.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,18 +24,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.fiap.fintech.components.CaixaDeEntrada
 import br.com.fiap.fintech.components.CardLogo
+import br.com.fiap.fintech.components.Transacoes
+
 
 @Composable
-fun LoginScreen() {
-    var email by remember {
+fun InvestimentoScreen() {
+    var valorInvestimento by remember {
         mutableStateOf("")
     }
-    var senha by remember {
+    var tipoInvestimento by remember {
         mutableStateOf("")
+    }
+
+    fun cadastrarInvestimento() {
+        // Lógica para cadastrar o investimento
     }
 
     Column(
@@ -52,7 +60,7 @@ fun LoginScreen() {
             colors = CardDefaults.cardColors(containerColor = Color(0xD0E9E1E1))
         ){
             Text(
-                text = "ENTRAR",
+                text = "INVESTIMENTO",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
@@ -60,26 +68,24 @@ fun LoginScreen() {
                     .align(Alignment.CenterHorizontally)
             )
             CaixaDeEntrada(
-                value = email,
-                placeholder = "Qual o seu e-mail?",
-                label = "Digite o seu e-mail",
+                value = valorInvestimento,
+                placeholder = "Quanto deseja investir?",
+                label = "Digite o valor do investimento:",
                 modifier = Modifier,
-                keyboardType = KeyboardType.Email,
-                atualizarValor = {email = it}
+                keyboardType = KeyboardType.Number,
+                atualizarValor = {valorInvestimento = it}
             ) {
 
 
             }
-            Spacer(modifier = Modifier.height(16.dp))
             CaixaDeEntrada(
-                value = senha,
-                placeholder = "Qual a sua senha?",
-                label = "Digite a sua senha",
+                value = tipoInvestimento,
+                placeholder = "Qual Investimento você vai escolher?",
+                label = "Digite o tipo de investimento",
                 modifier = Modifier,
-                keyboardType = KeyboardType.Password,
-                atualizarValor = {senha = it}
+                keyboardType = KeyboardType.Text,
+                atualizarValor = {tipoInvestimento = it}
             ) {
-
 
             }
             Button(
@@ -88,34 +94,45 @@ fun LoginScreen() {
                     .align(Alignment.CenterHorizontally)
                     .padding(32.dp),
                 shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Gray)
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xD0E9E1E1))
             ){
-                Text(text = "ENTRAR",
+                Text(text = "Cadastrar",
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,
                     fontSize = 14.sp
                 )
             }
-            Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = "Não possuiu uma conta?",
+
+            Card(
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-            )
-            Button(
-                onClick = {},
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(32.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Gray)
-            ){
-                Text(
-                    text = "Cadastre-se",
-                    color = Color.Black
-                )
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .padding(horizontal = 32.dp, vertical = 24.dp),
+                colors = CardDefaults.cardColors(containerColor = Color.DarkGray),
+                elevation = CardDefaults.cardElevation(4.dp),
+                border = BorderStroke(width = 1.dp, Color(0xD0E9E1E1))
+            ) {
+                Row(
+                    verticalAlignment = Alignment.Top,
+                    modifier = Modifier
+                        .padding(12.dp)
+                        .fillMaxSize()
+                ) {
+                    Column() {
+                        Text(
+                            text = "Investimentos:",
+                            color = Color.White,
+                            fontSize = 14.sp
+                        )
+
+                    }
+
+                }
             }
+
         }
+
     }
 }
+
 

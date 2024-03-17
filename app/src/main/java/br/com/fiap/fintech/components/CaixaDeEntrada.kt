@@ -18,10 +18,11 @@ fun CaixaDeEntrada(
 
     value: String,
     placeholder: String,
-    label : String,
+    label: String,
     modifier: Modifier,
     keyboardType: KeyboardType,
-    atualizarValor: (String) -> Unit
+    atualizarValor: (String) -> Unit,
+    function: () -> Unit
 
 ) {
     OutlinedTextField(

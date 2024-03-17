@@ -19,12 +19,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun CardInvestmentos(navController : NavController) {
+fun CardInvestmentos() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
-            .clickable { navController.navigate("Criar a tela de add investientos") },
+            .padding(16.dp),
+            //.clickable { navController.navigate("Criar a tela de add investientos") },
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFFFFFFF))
     ) {
