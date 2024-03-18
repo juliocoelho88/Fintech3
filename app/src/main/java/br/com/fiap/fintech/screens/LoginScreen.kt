@@ -25,11 +25,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.com.fiap.fintech.components.CaixaDeEntrada
 import br.com.fiap.fintech.components.CardLogo
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavHostController) {
     var email by remember {
         mutableStateOf("")
     }
@@ -75,7 +76,7 @@ fun LoginScreen() {
                 keyboardType = KeyboardType.Password
             ) { senha = it }
             Button(
-                onClick = {},
+                onClick = { navController.navigate("main")},
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(32.dp),

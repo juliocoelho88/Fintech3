@@ -5,15 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import br.com.fiap.fintech.screens.DespesaScreen
+import br.com.fiap.fintech.screens.InvestimentoScreen
+import br.com.fiap.fintech.screens.LoginScreen
 import br.com.fiap.fintech.screens.MainScreen
+import br.com.fiap.fintech.screens.ReceitaScreen
 import br.com.fiap.fintech.ui.theme.FintechTheme
 import br.com.fiap.fintech.viewmodel.TransacoesViewModel
 
@@ -26,18 +26,31 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    Fintech()
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = "login",
+                    ) {
+                        composable(route = "login") {
+                            LoginScreen(navController)
+                        }
+                        composable(route = "main") {
+                            MainScreen(navController, valorTotalInvestido = 0.0)
+                        }
+                        composable(route = "investimento") {
+                            InvestimentoScreen(navController, transacoesViewModel = TransacoesViewModel())
+                        }
+                        composable(route = "receita") {
+                            ReceitaScreen(transacoesViewModel = TransacoesViewModel())
+                        }
+                        composable(route = "despesa"){
+                            DespesaScreen(transacoesViewModel = TransacoesViewModel())
+                        }
+                    }
                 }
             }
         }
     }
-}
-
-@Composable
-fun Fintech() {
-    var valorTotalInvestido by remember { mutableStateOf(0.0) }
-    
-    MainScreen(valorTotalInvestido)
 }
 
 
