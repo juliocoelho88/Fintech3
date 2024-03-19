@@ -20,6 +20,7 @@ import br.com.fiap.fintech.viewmodel.TransacoesViewModel
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val transacoesViewModel = TransacoesViewModel()
         setContent {
             FintechTheme {
                 // A surface container using the 'background' color from the theme
@@ -35,16 +36,16 @@ class MainActivity : ComponentActivity() {
                             LoginScreen(navController)
                         }
                         composable(route = "main") {
-                            MainScreen(navController, valorTotalInvestido = 0.0)
+                            MainScreen(navController, valorTotalInvestido = 0.0, valorTotalReceitas = 0.0)
                         }
                         composable(route = "investimento") {
-                            InvestimentoScreen(navController, transacoesViewModel = TransacoesViewModel())
+                            InvestimentoScreen(navController, transacoesViewModel)
                         }
                         composable(route = "receita") {
-                            ReceitaScreen(transacoesViewModel = TransacoesViewModel())
+                            ReceitaScreen(navController, transacoesViewModel)
                         }
                         composable(route = "despesa"){
-                            DespesaScreen(transacoesViewModel = TransacoesViewModel())
+                            DespesaScreen(transacoesViewModel)
                         }
                     }
                 }

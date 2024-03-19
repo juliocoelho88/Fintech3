@@ -12,11 +12,12 @@ import androidx.navigation.NavController
 import br.com.fiap.fintech.components.CardConta
 import br.com.fiap.fintech.components.CardInvestimentos
 import br.com.fiap.fintech.components.CardLogo
+import br.com.fiap.fintech.components.CardReceita
 import br.com.fiap.fintech.components.CardTransacoes
 
 
 @Composable
-fun MainScreen(navController: NavController, valorTotalInvestido: Double) {
+fun MainScreen(navController: NavController, valorTotalInvestido: Double, valorTotalReceitas: Double) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -26,6 +27,7 @@ fun MainScreen(navController: NavController, valorTotalInvestido: Double) {
         CardLogo()
         CardConta()
         CardInvestimentos(navController, valorTotalInvestido)
+        CardReceita(navController, valorTotalReceitas)
         CardTransacoes()
     }
 }

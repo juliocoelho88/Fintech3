@@ -19,12 +19,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun CardInvestimentos(navController: NavController, valorTotalInvestido: Double) {
+fun CardReceita(navController: NavController, valorTotalReceitas: Double) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 1.dp, start = 16.dp, end = 16.dp, bottom = 8.dp)
-            .clickable(onClick = { navController.navigate("investimento") }),
+            .padding(top = 1.dp, start = 16.dp, end = 16.dp)
+            .clickable(onClick = { navController.navigate("receita") }),
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFFFFFFF))
     ) {
@@ -32,7 +32,7 @@ fun CardInvestimentos(navController: NavController, valorTotalInvestido: Double)
             modifier = Modifier.padding(12.dp)
         ) {
             Text(
-                text = "Investimentos",
+                text = "Receitas",
                 color = Color.Black,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.SemiBold,
@@ -49,7 +49,7 @@ fun CardInvestimentos(navController: NavController, valorTotalInvestido: Double)
                     fontWeight = FontWeight.SemiBold
                 )
                 Text(
-                    text = "$valorTotalInvestido",
+                    text = "$valorTotalReceitas",
                     color = Color.Black,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold
