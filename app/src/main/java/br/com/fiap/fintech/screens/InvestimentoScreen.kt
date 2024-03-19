@@ -42,7 +42,7 @@ fun InvestimentoScreen(navController: NavController, transacoesViewModel: Transa
     var ultimasTransacoes by remember { mutableStateOf(listOf<Transacao>()) }
 
     CardInvestimentos(navController, valorTotalInvestido = valorTotalInvestido)
-    MainScreen(navController, valorTotalInvestido)
+    MainScreen(navController, valorTotalInvestido, 0.0)
 
     Column(
         modifier = Modifier

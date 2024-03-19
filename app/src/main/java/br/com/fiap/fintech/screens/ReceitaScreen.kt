@@ -15,6 +15,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -25,18 +26,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.com.fiap.fintech.TipoTransacao
 import br.com.fiap.fintech.Transacao
 import br.com.fiap.fintech.components.CaixaDeEntrada
 import br.com.fiap.fintech.components.CardLogo
+import br.com.fiap.fintech.components.CardReceita
 import br.com.fiap.fintech.viewmodel.TransacoesViewModel
 
 @Composable
-fun ReceitaScreen(transacoesViewModel: TransacoesViewModel) {
-    var valorReceita by remember { mutableStateOf(0.0) }
+fun ReceitaScreen(navController: NavHostController, transacoesViewModel: TransacoesViewModel) {
+    var valorReceita by remember { mutableDoubleStateOf(0.0) }
     var tipoReceita by remember { mutableStateOf("") }
-    var valorTotalReceitas by remember { mutableStateOf(0.0) }
+    var valorTotalReceitas by remember { mutableDoubleStateOf(0.0) }
     var ultimasReceitas by remember { mutableStateOf(listOf<Transacao>()) }
+
+    CardReceita(navController, valorTotalReceitas = valorTotalReceitas)
+    MainScreen(navController, valorTotalReceitas, 0.0)
 
     Column(
         modifier = Modifier
